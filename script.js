@@ -211,7 +211,8 @@ canvas.addEventListener('pointerdown', jump);
 gameNavLink.addEventListener('click', startGame);
 window.addEventListener('keydown', (event) => {
   if ((event.code === 'Space' || event.code === 'ArrowUp') && !event.repeat) {
-    if (event.target instanceof HTMLButtonElement) return;
+    // Keep game controls from swallowing normal typing in forms and chat.
+    if (event.target instanceof HTMLElement && event.target.closest('input, textarea, select, button, a, [contenteditable="true"], [role="textbox"]')) return;
     event.preventDefault();
     jump();
   }

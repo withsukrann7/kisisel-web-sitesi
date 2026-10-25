@@ -76,7 +76,7 @@
       </div>
     </section>
 
-    <section class="education section-wrap section-pad">
+    <section class="education section-wrap section-pad" id="education">
       <div class="section-heading"><p class="eyebrow">05 / EĞİTİM</p><h2>Temel sağlam,<br><span>ufuk açık.</span></h2></div>
       <div class="edu-card"><div class="edu-icon">BSc</div><div><p class="eyebrow">LİSANS · BİLGİSAYAR MÜHENDİSLİĞİ</p><h3>Bülent Ecevit Üniversitesi</h3><p>Zonguldak <span class="edu-dot">·</span> 2023 — Devam ediyor</p><div class="edu-previous">Önceki eğitim: İnönü Üniversitesi <span>2022 — 2023</span></div></div><span class="edu-badge">BEÜ</span></div>
     </section>
@@ -99,7 +99,20 @@
     </div></section>
   </main>
   <footer class="site-footer section-wrap"><a class="wordmark" href="#home"><span class="mark">ŞY</span><span>Şükran Yılmaz</span></a><span class="footer-note">Merakla tasarlandı, özenle kodlandı. <span>© 2026</span></span><div class="social-links"><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=sukranyilmaz1144%40gmail.com" target="_blank" rel="noreferrer" aria-label="E-posta">✉</a><a href="https://linkedin.com/in/sukranyll" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a><a href="https://github.com/withsukrann7" target="_blank" rel="noreferrer" aria-label="GitHub">⌘</a></div></footer>
+  <section class="site-assistant" aria-label="Şükran'ın site asistanı">
+    <button class="assistant-launcher" id="assistant-launcher" type="button" aria-expanded="false" aria-controls="assistant-panel">
+      <span class="assistant-avatar" aria-hidden="true">Ş</span><span><strong>Şükran'a sor</strong><small>Site asistanı</small></span><span class="assistant-launch-icon" aria-hidden="true">✳</span>
+    </button>
+    <div class="assistant-panel" id="assistant-panel" aria-hidden="true">
+      <header class="assistant-header"><span class="assistant-avatar" aria-hidden="true">Ş</span><div><strong>Şükran'a sor</strong><small><i></i> Şükran hakkındaki site bilgileriyle yanıtlar</small></div><button class="assistant-close" id="assistant-close" type="button" aria-label="Sohbeti kapat">×</button></header>
+      <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
+      <div class="assistant-footer"><div class="assistant-prompts" aria-label="Örnek sorular"><button type="button" data-question="Projeleri neler?">Projeler</button><button type="button" data-question="Hangi teknolojileri biliyor?">Teknolojiler</button><button type="button" data-question="Deneyimi nedir?">Deneyim</button><button type="button" data-question="Nasıl iletişime geçebilirim?">İletişim</button></div>
+        <form class="assistant-form" id="assistant-form"><label class="sr-only" for="assistant-input">Asistana soru yaz</label><input id="assistant-input" name="question" type="text" maxlength="400" placeholder="Bir soru yaz..." autocomplete="off" required><button type="submit" aria-label="Soruyu gönder">↑</button></form><p class="assistant-disclaimer">Yanıtlar bu sitede paylaşılan bilgilerle sınırlıdır.</p>
+      </div>
+    </div>
+  </section>
   <div class="sparkle-layer" aria-hidden="true"></div>
   <script src="script.js"></script>
+  <script src="assistant.js"></script>
 </body>
 </html>
