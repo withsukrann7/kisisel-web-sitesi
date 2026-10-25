@@ -59,7 +59,7 @@ const KNOWLEDGE = [
   {
     id: 'experience',
     keywords: ['deneyim', 'staj', 'is', 'tecrube', 'demiroren', 'google developer', 'teknofest', 'women in tech'],
-    answer: 'Şükran’ın deneyimleri arasında Demirören Medya’da AI, Data & Software stajı; Women in Tech Community gönüllülüğü; Google Developer Student Club’da yazılım takım liderliği ve Teknofest İHA takımında yazılım takım üyeliği bulunuyor.',
+    answer: 'Şükran’ın deneyimleri arasında Demirören Medya’da tamamladığı AI, Data & Software stajı; KOBİZON PDM’de, Zonguldak Teknopark’ta yaptığı Python ve veri bilimi stajı; Women in Tech Community gönüllülüğü; Google Developer Student Club’da yazılım takım liderliği ve Teknofest İHA takımında yazılım takım üyeliği bulunuyor. Google Developer Student Club’da Android Studio ile 70’ten fazla kişiye mobil uygulama geliştirme eğitimi verdi, projelerin ilerletilmesine liderlik etti ve ekip arkadaşlarına mentorluk yaptı.',
     link: ['#experience', 'Deneyim bölümüne git'],
   },
   {
