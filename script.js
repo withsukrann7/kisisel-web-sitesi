@@ -55,6 +55,21 @@ const startButton = document.querySelector('#game-start');
 const scoreOutput = document.querySelector('#game-score');
 const bestOutput = document.querySelector('#game-best');
 const gameNavLink = document.querySelector('.nav-links a[href="#games"]');
+const gameCopy = {
+  tr: {
+    start: 'Oyunu başlat', restart: 'Yeniden başlat', replay: 'Tekrar oyna', ready: 'Hazır mısın?',
+    begin: 'Başlamak için boşluk tuşuna bas veya düğmeye dokun.', over: 'Oyun bitti!',
+    result: (value) => `Skorun ${value} · Tekrar oynamak için zıpla veya düğmeye bas.`,
+    aria: 'Dino T-Rex oyunu. Zıplamak için boşluk, yukarı ok veya ekrana dokunun.',
+  },
+  en: {
+    start: 'Start game', restart: 'Restart', replay: 'Play again', ready: 'Ready?',
+    begin: 'Press Space or tap the button to start.', over: 'Game over!',
+    result: (value) => `Your score: ${value} · Jump or press the button to play again.`,
+    aria: 'Dino T-Rex game. Press Space, the Up Arrow, or tap the screen to jump.',
+  },
+};
+const currentGameCopy = () => gameCopy[document.documentElement.lang === 'en' ? 'en' : 'tr'];
 const width = canvas.width;
 const height = canvas.height;
 const groundY = 220;
@@ -68,6 +83,7 @@ let frame = 0;
 let lastFrame = 0;
 let animationId = 0;
 let best = 0;
+let gameHasEnded = false;
 try { best = Number(localStorage.getItem('sukran-dino-best') || 0); } catch (_) { /* Storage may be blocked in private mode. */ }
 bestOutput.textContent = String(best).padStart(5, '0');
 
@@ -141,10 +157,11 @@ function startGame() {
   dino.velocity = 0;
   dino.jumping = false;
   running = true;
+  gameHasEnded = false;
   lastFrame = 0;
   scoreOutput.textContent = '00000';
   gameMessage.classList.add('hidden');
-  startButton.innerHTML = 'Yeniden başlat <span>↻</span>';
+  startButton.innerHTML = `${currentGameCopy().restart} <span>↻</span>`;
   animationId = requestAnimationFrame(tick);
 }
 
@@ -158,6 +175,7 @@ function jump() {
 
 function finishGame() {
   running = false;
+  gameHasEnded = true;
   cancelAnimationFrame(animationId);
   const finalScore = Math.floor(score);
   if (finalScore > best) {
@@ -165,8 +183,9 @@ function finishGame() {
     bestOutput.textContent = String(best).padStart(5, '0');
     try { localStorage.setItem('sukran-dino-best', String(best)); } catch (_) { /* Keep the score for this session. */ }
   }
-  showMessage('Oyun bitti!', `Skorun ${String(finalScore).padStart(5, '0')} · Tekrar oynamak için zıpla veya düğmeye bas.`);
-  startButton.innerHTML = 'Tekrar oyna <span>↻</span>';
+  const copy = currentGameCopy();
+  showMessage(copy.over, copy.result(String(finalScore).padStart(5, '0')));
+  startButton.innerHTML = `${copy.replay} <span>↻</span>`;
   render();
 }
 
@@ -219,6 +238,21 @@ window.addEventListener('keydown', (event) => {
 });
 render();
 
+window.addEventListener('site-language-change', (event) => {
+  const language = event.detail.language === 'en' ? 'en' : 'tr';
+  const copy = gameCopy[language];
+  canvas.setAttribute('aria-label', copy.aria);
+  if (running) {
+    startButton.innerHTML = `${copy.restart} <span>↻</span>`;
+  } else if (gameHasEnded) {
+    showMessage(copy.over, copy.result(String(Math.floor(score)).padStart(5, '0')));
+    startButton.innerHTML = `${copy.replay} <span>↻</span>`;
+  } else {
+    showMessage(copy.ready, copy.begin);
+    startButton.innerHTML = `${copy.start} <span>→</span>`;
+  }
+});
+
 const contactForm = document.querySelector('#contact-form');
 contactForm.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -230,8 +264,9 @@ contactForm.addEventListener('submit', (event) => {
   composeUrl.searchParams.set('view', 'cm');
   composeUrl.searchParams.set('fs', '1');
   composeUrl.searchParams.set('to', 'sukranyilmaz1144@gmail.com');
-  composeUrl.searchParams.set('su', `Web sitesi iletişim formu — ${name}`);
-  composeUrl.searchParams.set('body', `${message}\n\n---\nGönderen: ${name}\nE-posta: ${sender}`);
+  const isEnglish = document.documentElement.lang === 'en';
+  composeUrl.searchParams.set('su', `${isEnglish ? 'Website contact form' : 'Web sitesi iletişim formu'} — ${name}`);
+  composeUrl.searchParams.set('body', `${message}\n\n---\n${isEnglish ? 'From' : 'Gönderen'}: ${name}\n${isEnglish ? 'Email' : 'E-posta'}: ${sender}`);
   const composeWindow = window.open(composeUrl.toString(), '_blank');
   if (composeWindow) composeWindow.opener = null;
   else window.location.href = composeUrl.toString();

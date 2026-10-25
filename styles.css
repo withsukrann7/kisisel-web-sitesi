@@ -74,3 +74,9 @@
 @keyframes assistant-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}@keyframes assistant-dot{to{opacity:.35;transform:translateY(-3px)}}
 @media(max-width:650px){.site-assistant{right:14px;bottom:14px}.assistant-panel{right:-2px;width:min(390px,calc(100vw - 24px));height:min(620px,calc(100dvh - 24px));border-radius:18px}.assistant-header{padding:13px 14px}.assistant-messages{padding:14px 12px}.assistant-bubble{font-size:11px}.assistant-prompts button{font-size:9px;padding:6px 9px}}
 @media(prefers-reduced-motion:reduce){.assistant-panel,.assistant-launcher,.assistant-message{transition:none;animation:none}}
+.language-switch{display:flex;align-items:center;gap:2px;flex:0 0 auto;padding:3px;border:1px solid #eee5e9;border-radius:999px;background:#fffdfd;box-shadow:0 3px 12px #30263108}
+.language-switch button{min-width:34px;height:30px;padding:0 9px;border:0;border-radius:999px;background:transparent;color:#968a92;font:700 10px var(--sans);cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.language-switch button:hover{color:#302631}
+.language-switch button[aria-pressed="true"]{background:#302631;color:#fff}
+.language-switch button:focus-visible{outline:2px solid #d98aa8;outline-offset:2px}
+@media(max-width:650px){.language-switch{padding:2px}.language-switch button{min-width:30px;height:28px;padding-inline:7px;font-size:9px}}

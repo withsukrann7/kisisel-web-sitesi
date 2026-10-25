@@ -20,6 +20,10 @@
       <a href="#about">Hakkımda</a><a href="#experience">Deneyim</a><a href="#projects">Projeler</a><a href="#games">Oyunlar</a><a href="#skills">Yetkinlikler</a>
       <a class="nav-contact" href="#contact">İletişim <span>↗</span></a>
     </nav>
+    <div class="language-switch" role="group" aria-label="Site language">
+      <button type="button" data-language="tr" aria-pressed="true">TR</button>
+      <button type="button" data-language="en" aria-pressed="false">EN</button>
+    </div>
   </header>
 
   <main>
@@ -107,7 +111,7 @@
     <div class="assistant-panel" id="assistant-panel" aria-hidden="true">
       <header class="assistant-header"><span class="assistant-avatar" aria-hidden="true">Ş</span><div><strong>Şükran'a sor</strong><small><i></i> Şükran hakkındaki site bilgileriyle yanıtlar</small></div><button class="assistant-close" id="assistant-close" type="button" aria-label="Sohbeti kapat">×</button></header>
       <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text"></div>
-      <div class="assistant-footer"><div class="assistant-prompts" aria-label="Örnek sorular"><button type="button" data-question="Projeleri neler?">Projeler</button><button type="button" data-question="Hangi teknolojileri biliyor?">Teknolojiler</button><button type="button" data-question="Deneyimi nedir?">Deneyim</button><button type="button" data-question="Nasıl iletişime geçebilirim?">İletişim</button></div>
+      <div class="assistant-footer"><div class="assistant-prompts" aria-label="Örnek sorular"><button type="button" data-question="Projeleri neler?" data-question-tr="Projeleri neler?" data-question-en="What projects has she worked on?">Projeler</button><button type="button" data-question="Hangi teknolojileri biliyor?" data-question-tr="Hangi teknolojileri biliyor?" data-question-en="What technologies does she know?">Teknolojiler</button><button type="button" data-question="Deneyimi nedir?" data-question-tr="Deneyimi nedir?" data-question-en="What experience does she have?">Deneyim</button><button type="button" data-question="Nasıl iletişime geçebilirim?" data-question-tr="Nasıl iletişime geçebilirim?" data-question-en="How can I contact her?">İletişim</button></div>
         <form class="assistant-form" id="assistant-form"><label class="sr-only" for="assistant-input">Asistana soru yaz</label><input id="assistant-input" name="question" type="text" maxlength="400" placeholder="Bir soru yaz..." autocomplete="off" required><button type="submit" aria-label="Soruyu gönder">↑</button></form><p class="assistant-disclaimer">Yanıtlar bu sitede paylaşılan bilgilerle sınırlıdır.</p>
       </div>
     </div>
@@ -115,5 +119,6 @@
   <div class="sparkle-layer" aria-hidden="true"></div>
   <script src="script.js"></script>
   <script src="assistant.js"></script>
+  <script src="language.js"></script>
 </body>
 </html>
